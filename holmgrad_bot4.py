@@ -2232,9 +2232,9 @@ if __name__ == "__main__":
 
     print("Бот запущен.")
     
-# Настройка Webhook
-url = "https://holmgard-bot.onrender.com"
+    # Настройка Webhook
+    url = "https://holmgard-bot.onrender.com"
 application = ApplicationBuilder().token(token).build()  # Создаём приложение
 
-# Запуск Webhook
+    # Запуск Webhook
 application.run_webhook(listen="0.0.0.0", port=5000, url_path="")
