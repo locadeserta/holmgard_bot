@@ -2211,11 +2211,14 @@ async def mention_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # Основная часть
 if __name__ == "__main__":
-
+    # Получение токена из переменной окружения
     token = os.getenv("7722693094:AAHrb9s5O4ffvCQxIvlpiaWSMw1cCJdlEuA")
+    
+    # Создание приложения
+    application = ApplicationBuilder().token(token).build()
 
-application = ApplicationBuilder().token(token).build()
- application.add_handler(CommandHandler("start", start))
+    # Добавление обработчиков
+    application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("random_word", random_word))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, translate))
     application.add_handler(MessageHandler(filters.ChatType.GROUP & filters.TEXT, translate))  # Для групп
@@ -2228,7 +2231,10 @@ application = ApplicationBuilder().token(token).build()
     application.add_handler(MessageHandler(filters.Regex(r"@"), mention_handler))  # Проверка на @
 
     print("Бот запущен.")
+    
+    # Настройка Webhook
     url = "https://holmgard-bot.onrender.com"
-application = ApplicationBuilder().token(token).webhook_url(url).build()
+    application = ApplicationBuilder().token(token).webhook_url(url).build()
 
-application.run_webhook(listen="0.0.0.0", port=5000, url_path="")
+    # Запуск Webhook
+    application.run_webhook(listen="0.0.0.0", port=5000, url_path="")
