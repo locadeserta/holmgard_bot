@@ -2213,7 +2213,7 @@ async def mention_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 if __name__ == "__main__":
     # Получение токена из переменной окружения
     token = os.getenv("BOT_TOKEN")
-    
+
     # Создание приложения
     application = ApplicationBuilder().token(token).build()
 
@@ -2231,10 +2231,9 @@ if __name__ == "__main__":
     application.add_handler(MessageHandler(filters.Regex(r"@"), mention_handler))  # Проверка на @
 
     print("Бот запущен.")
-    
+
     # Настройка Webhook
     url = "https://holmgard-bot.onrender.com"
-application = ApplicationBuilder().token(token).build()  # Создаём приложение
 
     # Запуск Webhook
-application.run_webhook(listen="0.0.0.0", port=5000, url_path="")
+    application.run_webhook(listen="0.0.0.0", port=5000, url_path="")
