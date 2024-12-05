@@ -2212,7 +2212,7 @@ async def mention_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # Основная часть
 if __name__ == "__main__":
     # Получение токена из переменной окружения
-    token = os.getenv("7722693094:AAHrb9s5O4ffvCQxIvlpiaWSMw1cCJdlEuA")
+    token = os.getenv("BOT_TOKEN")
     
     # Создание приложения
     application = ApplicationBuilder().token(token).build()
