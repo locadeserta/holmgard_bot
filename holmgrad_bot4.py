@@ -2211,11 +2211,11 @@ async def mention_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # Основная часть
 if __name__ == "__main__":
-    token = os.getenv("7722693094:AAHrb9s5O4ffvCQxIvlpiaWSMw1cCJdlEuA")
-application = ApplicationBuilder().token(token).build()
 
-    # Обработчики
-    application.add_handler(CommandHandler("start", start))
+    token = os.getenv("7722693094:AAHrb9s5O4ffvCQxIvlpiaWSMw1cCJdlEuA")
+
+application = ApplicationBuilder().token(token).build()
+ application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("random_word", random_word))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, translate))
     application.add_handler(MessageHandler(filters.ChatType.GROUP & filters.TEXT, translate))  # Для групп
