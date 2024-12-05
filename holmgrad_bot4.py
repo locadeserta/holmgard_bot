@@ -1,3 +1,4 @@
+import os
 import re
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, CallbackQueryHandler, ContextTypes, filters
@@ -2210,7 +2211,8 @@ async def mention_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # Основная часть
 if __name__ == "__main__":
-    application = ApplicationBuilder().token("7722693094:AAHrb9s5O4ffvCQxIvlpiaWSMw1cCJdlEuA").build()
+    token = os.getenv("7722693094:AAHrb9s5O4ffvCQxIvlpiaWSMw1cCJdlEuA")
+application = ApplicationBuilder().token(token).build()
 
     # Обработчики
     application.add_handler(CommandHandler("start", start))
@@ -2226,4 +2228,7 @@ if __name__ == "__main__":
     application.add_handler(MessageHandler(filters.Regex(r"@"), mention_handler))  # Проверка на @
 
     print("Бот запущен.")
-    application.run_polling()
+    url = "https://holmgard-bot.onrender.com"
+application = ApplicationBuilder().token(token).webhook_url(url).build()
+
+application.run_webhook(listen="0.0.0.0", port=5000, url_path="")
