@@ -2121,16 +2121,17 @@ async def translate(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     user_input = update.message.text.strip().lower()  # Приводим текст к нижнему регистру
     chat_type = update.message.chat.type  # Тип чата (private, group, supergroup и т.д.)
-    excluded_words = ["я", "но", "и", "ты", "если", "чтобы", "год", "так", "очень", "слово", "есть", "столько", "если же"]  # Список слов, на которые бот не должен реагировать в группах
+    excluded_phrases = ["я", "но", "и", "ты", "если", "чтобы", "год", "так", "очень", "слово", "есть", "столько", "если же"]  # Список слов, на которые бот не должен реагировать в группах
     result = None
     response = None
 
-    # Разбиваем текст на слова и проверяем их одно за другим
-    words = re.findall(r'\b\w+\b', user_input)
+    # Проверяем наличие исключаемых фраз в тексте сообщения
+if chat_type in ["group", "supergroup"]:
+    for phrase in excluded_phrases:
+        if phrase in user_input:
+            return  # Не реагируем, если исключаемая фраза найдена
 
-    for word in words:
-        if chat_type in ["group", "supergroup"] and word in excluded_words:
-            continue  # Пропускаем слова из excluded_words в группах
+words = re.findall(r'\b\w+\b', user_input)
 
         if word.capitalize() in translations:  # Используем capitalized для точного поиска
             result = translations[word.capitalize()]
