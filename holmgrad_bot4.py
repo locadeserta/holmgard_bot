@@ -2126,11 +2126,11 @@ async def translate(update: Update, context: ContextTypes.DEFAULT_TYPE):
     response = None
 
     # Разбиваем текст на слова и проверяем их одно за другим
-words = re.findall(r'\b\w+\b', user_input)
+    words = re.findall(r'\b\w+\b', user_input)
 
-for word in words:
-    if chat_type in ["group", "supergroup"] and word in excluded_words:
-        continue  # Пропускаем слова из excluded_words в группах
+    for word in words:
+        if chat_type in ["group", "supergroup"] and word in excluded_words:
+            continue  # Пропускаем слова из excluded_words в группах
 
         if word.capitalize() in translations:  # Используем capitalized для точного поиска
             result = translations[word.capitalize()]
