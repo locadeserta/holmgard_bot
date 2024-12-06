@@ -2121,7 +2121,7 @@ async def translate(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     user_input = update.message.text.strip().lower()  # Приводим текст к нижнему регистру
     chat_type = update.message.chat.type  # Тип чата (private, group, supergroup и т.д.)
-    excluded_words = ["я", "но", "и", "ты", "если", "чтобы", "год", "так", "очень", "слово", "есть", "столько", "кроме", "сам", "вы", "же", "много"]  # Список слов, на которые бот не должен реагировать в группах
+    excluded_words = ["я", "но", "и", "ты", "если", "чтобы", "год", "так", "очень", "слово", "есть", "столько", "кроме", "сам", "вы", "же", "много", "без"]  # Список слов, на которые бот не должен реагировать в группах
     result = None
     response = None
 
