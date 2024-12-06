@@ -2236,4 +2236,9 @@ if __name__ == "__main__":
     url = "https://holmgard-bot.onrender.com"
 
     # Запуск Webhook
-    application.run_webhook(listen="0.0.0.0", port=5000, url_path="")
+    application.run_webhook(
+    listen="0.0.0.0",
+    port=5000,
+    url_path="webhook",
+    webhook_url="https://holmgard-bot.onrender.com/webhook",
+)
